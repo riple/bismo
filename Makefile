@@ -139,7 +139,7 @@ $(BUILD_DIR_HWDRV)/BitSerialMatMulAccel.hpp:
 # create a new Vivado project
 hw_vivadoproj: $(BITFILE_PRJDIR)/bitfile_synth.xpr
 
-$(BITFILE_PRJDIR)/bitfile_synth.xpr: check_vivado $(HW_VERILOG)
+$(BITFILE_PRJDIR)/bitfile_synth.xpr: check_vivado
 	vivado -mode $(VIVADO_MODE) -source $(VIVADO_PROJ_SCRIPT) -tclargs $(TOP) $(HW_VERILOG) $(BITFILE_PRJNAME) $(BITFILE_PRJDIR) $(FREQ_MHZ)
 
 # launch Vivado in GUI mode with created project

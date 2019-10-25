@@ -90,6 +90,7 @@ object ChiselMain {
     val dpaDimLHS: Int = args(2).toInt
     val dpaDimCommon: Int = args(3).toInt
     val dpaDimRHS: Int = args(4).toInt
+
     val accInst = Settings.makeInstFxn(
       new BitSerialMatMulParams(
         dpaDimLHS = dpaDimLHS, dpaDimRHS = dpaDimRHS, dpaDimCommon = dpaDimCommon,
@@ -99,8 +100,9 @@ object ChiselMain {
       )
     )
     val platformInst = TidbitsMakeUtils.platformMap(platformName)
-
     val chiselArgs = Array("--backend", "v", "--targetDir", targetDir)
+
+    // call Berkely Chisel to generate Verilog
     chiselMain(chiselArgs, () => Module(platformInst(accInst)))
   }
 }
